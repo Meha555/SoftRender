@@ -53,7 +53,7 @@ PBRShader * PBRShader::GetInstance()
 	if (shader == nullptr) 
 		shader = new PBRShader();
 	if (brdfLUT == nullptr)
-		brdfLUT = new Texture2D("../assets/ibl_brdf_lut.png");
+		brdfLUT = new Texture2D("../../assets/ibl_brdf_lut.png");
 	return shader;
 }
 

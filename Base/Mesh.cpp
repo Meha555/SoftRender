@@ -1,5 +1,5 @@
-#include "Base/Mesh.h"
-#include "Base/Vertex.h"
+#include "Mesh.h"
+#include "Vertex.h"
 #include "Material/MaterialBase.h"
 
 

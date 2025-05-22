@@ -1,7 +1,7 @@
 #ifndef MATH_H
 #define MATH_H
 #include "Global.h"
-#include "Base/Vertex.h"
+#include "Vertex.h"
 
 const float PI = 3.14159265359;
 

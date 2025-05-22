@@ -7,14 +7,18 @@
 #include "RenderWidget.h"
 #include "Pipeline/StateMachine.h"
 #include "Base/Camera.h"
-#include "Base/Model.h"
+#include "ui_RenderWidget.h"
 
 RenderWidget::RenderWidget(QWidget *parent)
-	: QWidget(parent),fps(0),firstMouseMove(true),mdTab(nullptr)
+	: QWidget(parent)
+	, fps(0)
+	, firstMouseMove(true)
+	, mdTab(nullptr)
+	, ui(new Ui::RenderWidgetClass)
 {
-	ui.setupUi(this);
+	ui->setupUi(this);
 
-	//��ʼ��֡���� ����� �ƹ�
+	//初始化帧缓冲 摄像机 灯光
 	sys = StateMachine::GetInstance();
 	sys->Init(800, 600, 60);
 
@@ -42,16 +46,12 @@ RenderWidget::RenderWidget(QWidget *parent)
 	connect(inputTimer, &QTimer::timeout, this, &RenderWidget::DealInput);
 
 
-	mdTab = new ModelTab(ui.tabWidget);
-	ui.tabWidget->addTab(mdTab, QString::fromLocal8Bit("ģ������"));
+	mdTab = new ModelTab(ui->tabWidget);
+	ui->tabWidget->addTab(mdTab, tr("模型设置"));
 
-	envTab = new EnvTab(ui.tabWidget);
-	ui.tabWidget->addTab(envTab, QString::fromLocal8Bit("��������"));
-
-	
+	envTab = new EnvTab(ui->tabWidget);
+	ui->tabWidget->addTab(envTab, tr("环境设置"));
 }
-
-
 
 RenderWidget::~RenderWidget()
 {
@@ -68,6 +68,7 @@ RenderWidget::~RenderWidget()
 	renderLoop = nullptr;
 	renderThread = nullptr;
 	mdTab = nullptr;
+    delete ui;
 }
 
 

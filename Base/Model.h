@@ -2,7 +2,7 @@
 #define MODEL_H
 
 
-#include "Base/Mesh.h"
+#include "Mesh.h"
 
 class Material;
 

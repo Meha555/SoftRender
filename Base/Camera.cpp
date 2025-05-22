@@ -1,7 +1,7 @@
 #include "Camera.h"
-#include "Base/Transform.h"
-#include "Base/Clip.h"
-#include "Base/Function.h"
+#include "Transform.h"
+#include "Clip.h"
+#include "Function.h"
 //位置 垂直反转 看的目标点 Fov 宽 高
 Camera::Camera(
 	int w,

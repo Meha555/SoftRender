@@ -1,6 +1,6 @@
 #include "Clip.h"
-#include "Base/Vertex.h"
-#include "Base/Function.h"
+#include "Vertex.h"
+#include "Function.h"
 #include "Pipeline/StateMachine.h"
 
 

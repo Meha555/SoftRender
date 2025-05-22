@@ -76,19 +76,19 @@ void StateMachine::Init(int w, int h, float fov)
 	Model * floor = Model::CreateFloor(glm::vec3(0, -0.5, 0), 1.0f);
 	floor->name = "floor";
 	floor->meshes[0]->name = "floor_mesh";
-	Texture2D * floorTex = new Texture2D("../assets/container.jpg");
+	Texture2D * floorTex = new Texture2D("../../assets/container.jpg");
 	floor->meshes[0]->material->SetTexture(floorTex, 0);
 	delete floorTex;
 	models.push_back(floor);
 	
 	//Mesh * box = Mesh::CreateBox(glm::vec3(0.0f), 1.0f);
 	skyBox = Model::CreateSkyBox();
-	skyboxMap[0] = new Texture3D("../assets/skybox/valley_skybox.hdr");
-	irradiancdeMap[0] = new Texture3D("../assets/skybox/valley_irradiance.hdr");
-	radianceMap[0] = new Texture3D("../assets/skybox/valley_radiance.hdr");
-	skyboxMap[1] = new Texture3D("../assets/skybox/city_skybox.hdr");
-	irradiancdeMap[1] = new Texture3D("../assets/skybox/city_irradiance.hdr");
-	radianceMap[1] = new Texture3D("../assets/skybox/city_radiance.hdr");
+	skyboxMap[0] = new Texture3D("../../assets/skybox/valley_skybox.hdr");
+	irradiancdeMap[0] = new Texture3D("../../assets/skybox/valley_irradiance.hdr");
+	radianceMap[0] = new Texture3D("../../assets/skybox/valley_radiance.hdr");
+	skyboxMap[1] = new Texture3D("../../assets/skybox/city_skybox.hdr");
+	irradiancdeMap[1] = new Texture3D("../../assets/skybox/city_irradiance.hdr");
+	radianceMap[1] = new Texture3D("../../assets/skybox/city_radiance.hdr");
 }
 
 void StateMachine::Resize(int w, int h)

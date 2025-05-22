@@ -6,39 +6,42 @@
 #include "ModelTab.h"
 #include "Base/Model.h"
 #include "Pipeline/StateMachine.h"
+#include "ui_ModelTab.h"
 
 bool changed = false;
 
 ModelTab::ModelTab(QWidget *parent)
-	: QWidget(parent), itemMdl(nullptr)
+	: QWidget(parent)
+	, itemMdl(nullptr)
+	, ui(new Ui::ModelTab)
 {
-	ui.setupUi(this);
+	ui->setupUi(this);
 
 	sys = StateMachine::GetInstance();
 
-	connect(ui.openFileButton, &QPushButton::clicked, this, &ModelTab::OpenModel);
-	connect(ui.removeButton, &QPushButton::clicked, this, &ModelTab::RemoveSelectedModel);
-	connect(ui.mdlListView, &QListView::clicked, this, &ModelTab::SelectionChange);
-	connect(ui.rdMdCB, &QCheckBox::clicked, this, &ModelTab::ChangeRenderMode);
-	connect(ui.matButton, &QPushButton::clicked, this, &ModelTab::SetMaterial);
+	connect(ui->openFileButton, &QPushButton::clicked, this, &ModelTab::OpenModel);
+	connect(ui->removeButton, &QPushButton::clicked, this, &ModelTab::RemoveSelectedModel);
+	connect(ui->mdlListView, &QListView::clicked, this, &ModelTab::SelectionChange);
+	connect(ui->rdMdCB, &QCheckBox::clicked, this, &ModelTab::ChangeRenderMode);
+	connect(ui->matButton, &QPushButton::clicked, this, &ModelTab::SetMaterial);
 
-	connect(ui.posXSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
-	connect(ui.posYSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
-	connect(ui.posZSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
-	connect(ui.rotXSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
-	connect(ui.rotYSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
-	connect(ui.rotZSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
-	connect(ui.scaleSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
+	connect(ui->posXSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
+	connect(ui->posYSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
+	connect(ui->posZSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
+	connect(ui->rotXSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
+	connect(ui->rotYSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
+	connect(ui->rotZSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
+	connect(ui->scaleSpin, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, &ModelTab::ChangeModelMatrix);
 
-	ui.mdlListView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	ui.posXSpin->setDisabled(true);
-	ui.posYSpin->setDisabled(true);
-	ui.posZSpin->setDisabled(true);
-	ui.rotXSpin->setDisabled(true);
-	ui.rotYSpin->setDisabled(true);
-	ui.rotZSpin->setDisabled(true);
-	ui.scaleSpin->setDisabled(true);
-	ui.matButton->setDisabled(true);
+	ui->mdlListView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	ui->posXSpin->setDisabled(true);
+	ui->posYSpin->setDisabled(true);
+	ui->posZSpin->setDisabled(true);
+	ui->rotXSpin->setDisabled(true);
+	ui->rotYSpin->setDisabled(true);
+	ui->rotZSpin->setDisabled(true);
+	ui->scaleSpin->setDisabled(true);
+	ui->matButton->setDisabled(true);
 
 	UpdateText();
 }
@@ -46,6 +49,7 @@ ModelTab::ModelTab(QWidget *parent)
 ModelTab::~ModelTab()
 {
 	sys = nullptr;
+	delete ui;
 }
 
 
@@ -73,9 +77,9 @@ int SELECTED_MESH = -1;
 
 void ModelTab::RemoveSelectedModel()
 {
-	ui.removeButton->setDisabled(true);
+	ui->removeButton->setDisabled(true);
 	if (SELECTED_MODEL == -1 && SELECTED_MESH == -1) {
-		ui.removeButton->setDisabled(false);
+		ui->removeButton->setDisabled(false);
 		return;
 	}
 	if (SELECTED_MESH != -1) {
@@ -85,8 +89,8 @@ void ModelTab::RemoveSelectedModel()
 			sys->RemoveModel(SELECTED_MODEL);
 		UpdateText();
 		sys->mutex.unlock();
-		ui.removeButton->setDisabled(false);
-		ui.matButton->setDisabled(true);
+		ui->removeButton->setDisabled(false);
+		ui->matButton->setDisabled(true);
 		return;
 	}
 	if (SELECTED_MODEL != -1) {
@@ -94,18 +98,18 @@ void ModelTab::RemoveSelectedModel()
 		sys->RemoveModel(SELECTED_MODEL);
 		UpdateText();
 		sys->mutex.unlock();
-		ui.removeButton->setDisabled(false);
-		ui.matButton->setDisabled(true);
+		ui->removeButton->setDisabled(false);
+		ui->matButton->setDisabled(true);
 		return;
 	}
-	ui.removeButton->setDisabled(false);
+	ui->removeButton->setDisabled(false);
 }
 
 void ModelTab::SelectionChange(const QModelIndex & current)
 {
 	int index = current.row();
 	if (index == -1) {
-		ui.matButton->setDisabled(true);
+		ui->matButton->setDisabled(true);
 		UpdateSpinBox();
 		return;
 	}
@@ -114,7 +118,7 @@ void ModelTab::SelectionChange(const QModelIndex & current)
 		if (sb == index) {
 			SELECTED_MODEL = i;
 			SELECTED_MESH = -1;
-			ui.matButton->setDisabled(true);
+			ui->matButton->setDisabled(true);
 			UpdateSpinBox();
 			return;
 		}
@@ -123,7 +127,7 @@ void ModelTab::SelectionChange(const QModelIndex & current)
 			if (sb == index) {
 				SELECTED_MODEL = i;
 				SELECTED_MESH = j;
-				ui.matButton->setDisabled(false);
+				ui->matButton->setDisabled(false);
 				UpdateSpinBox();
 				return;
 			}
@@ -147,13 +151,13 @@ void ModelTab::ChangeModelMatrix(double x)
 {
 	if (changed)
 		return;
-	sys->models[SELECTED_MODEL]->position.x = ui.posXSpin->value();
-	sys->models[SELECTED_MODEL]->position.y = ui.posYSpin->value();
-	sys->models[SELECTED_MODEL]->position.z = ui.posZSpin->value();
-	sys->models[SELECTED_MODEL]->pitch = ui.rotXSpin->value();
-	sys->models[SELECTED_MODEL]->yaw = ui.rotYSpin->value();
-	sys->models[SELECTED_MODEL]->roll = ui.rotZSpin->value();
-	sys->models[SELECTED_MODEL]->scale = ui.scaleSpin->value();
+	sys->models[SELECTED_MODEL]->position.x = ui->posXSpin->value();
+	sys->models[SELECTED_MODEL]->position.y = ui->posYSpin->value();
+	sys->models[SELECTED_MODEL]->position.z = ui->posZSpin->value();
+	sys->models[SELECTED_MODEL]->pitch = ui->rotXSpin->value();
+	sys->models[SELECTED_MODEL]->yaw = ui->rotYSpin->value();
+	sys->models[SELECTED_MODEL]->roll = ui->rotZSpin->value();
+	sys->models[SELECTED_MODEL]->scale = ui->scaleSpin->value();
 }
 
 void ModelTab::SetMaterial()
@@ -178,35 +182,35 @@ void ModelTab::UpdateText()
 			itemMdl->appendRow(objItem);
 		}
 	}
-	ui.mdlListView->setModel(itemMdl);
+	ui->mdlListView->setModel(itemMdl);
 }
 
 void ModelTab::UpdateSpinBox()
 {
 	if (SELECTED_MODEL == -1) {
-		ui.posXSpin->setDisabled(true);
-		ui.posYSpin->setDisabled(true);
-		ui.posZSpin->setDisabled(true);
-		ui.rotXSpin->setDisabled(true);
-		ui.rotYSpin->setDisabled(true);
-		ui.rotZSpin->setDisabled(true);
-		ui.scaleSpin->setDisabled(true);
+		ui->posXSpin->setDisabled(true);
+		ui->posYSpin->setDisabled(true);
+		ui->posZSpin->setDisabled(true);
+		ui->rotXSpin->setDisabled(true);
+		ui->rotYSpin->setDisabled(true);
+		ui->rotZSpin->setDisabled(true);
+		ui->scaleSpin->setDisabled(true);
 		return;
 	}
 	changed = true;
-	ui.posXSpin->setDisabled(false);
-	ui.posXSpin->setValue(sys->models[SELECTED_MODEL]->position.x);
-	ui.posYSpin->setDisabled(false);
-	ui.posYSpin->setValue(sys->models[SELECTED_MODEL]->position.y);
-	ui.posZSpin->setDisabled(false);
-	ui.posZSpin->setValue(sys->models[SELECTED_MODEL]->position.z);
-	ui.rotXSpin->setDisabled(false);
-	ui.rotXSpin->setValue(sys->models[SELECTED_MODEL]->pitch);
-	ui.rotYSpin->setDisabled(false);
-	ui.rotYSpin->setValue(sys->models[SELECTED_MODEL]->yaw);
-	ui.rotZSpin->setDisabled(false);
-	ui.rotZSpin->setValue(sys->models[SELECTED_MODEL]->roll);
-	ui.scaleSpin->setDisabled(false);
-	ui.scaleSpin->setValue(sys->models[SELECTED_MODEL]->scale);
+	ui->posXSpin->setDisabled(false);
+	ui->posXSpin->setValue(sys->models[SELECTED_MODEL]->position.x);
+	ui->posYSpin->setDisabled(false);
+	ui->posYSpin->setValue(sys->models[SELECTED_MODEL]->position.y);
+	ui->posZSpin->setDisabled(false);
+	ui->posZSpin->setValue(sys->models[SELECTED_MODEL]->position.z);
+	ui->rotXSpin->setDisabled(false);
+	ui->rotXSpin->setValue(sys->models[SELECTED_MODEL]->pitch);
+	ui->rotYSpin->setDisabled(false);
+	ui->rotYSpin->setValue(sys->models[SELECTED_MODEL]->yaw);
+	ui->rotZSpin->setDisabled(false);
+	ui->rotZSpin->setValue(sys->models[SELECTED_MODEL]->roll);
+	ui->scaleSpin->setDisabled(false);
+	ui->scaleSpin->setValue(sys->models[SELECTED_MODEL]->scale);
 	changed = false;
 }

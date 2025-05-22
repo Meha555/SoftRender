@@ -1,7 +1,7 @@
-#include "Base/Light.h"
+#include "Light.h"
 #include "Shader/ShaderBase.h"
 #include "Material/Texture.h"
-#include "Base/Transform.h"
+#include "Transform.h"
 
 Light::Light(const glm::vec3 & pos, const glm::vec3 & dir, const glm::vec4 & c, float i) :
 	position(pos),

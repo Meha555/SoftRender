@@ -70,7 +70,7 @@ public:
 	bool drawSkyBox;
 	bool drawShadow;
 
-	QMutex mutex;
+	std::mutex mutex;
 
 #pragma endregion STATE
 

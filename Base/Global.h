@@ -9,7 +9,7 @@
 #include <thread>
 #include <intrin.h>
 
-#include <QMutex>
+#include <mutex>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

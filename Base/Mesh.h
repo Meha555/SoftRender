@@ -2,7 +2,7 @@
 #define MESH_H
 
 #include "Global.h"
-#include "Base/Vertex.h"
+#include "Vertex.h"
 
 
 class Material;

@@ -79,12 +79,12 @@ void RenderLoop::MainLoop()
 	delete rn;
 	delete ao;
 	*/
-	Model * helmet = new Model("../assets/helmet/helmet.obj");
-	Texture2D * mt = new Texture2D("../assets/helmet/helmet_basecolor.tga");
-	Texture2D * nl = new Texture2D("../assets/helmet/helmet_normal.tga");
-	Texture2D * ml = new Texture2D("../assets/helmet/helmet_metalness.tga");
-	Texture2D * rn = new Texture2D("../assets/helmet/helmet_roughness.tga");
-	Texture2D * ao = new Texture2D("../assets/helmet/helmet_occlusion.tga");
+	Model * helmet = new Model("../../assets/helmet/helmet.obj");
+	Texture2D * mt = new Texture2D("../../assets/helmet/helmet_basecolor.tga");
+	Texture2D * nl = new Texture2D("../../assets/helmet/helmet_normal.tga");
+	Texture2D * ml = new Texture2D("../../assets/helmet/helmet_metalness.tga");
+	Texture2D * rn = new Texture2D("../../assets/helmet/helmet_roughness.tga");
+	Texture2D * ao = new Texture2D("../../assets/helmet/helmet_occlusion.tga");
 	helmet->meshes[0]->material->SetTexture(mt, 0);
 	helmet->meshes[0]->material->SetTexture(nl, 1);
 	helmet->meshes[0]->material->SetTexture(ml, 2);

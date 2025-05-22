@@ -3,9 +3,12 @@
 #include <QWidget>
 #include <QStandardItemModel>
 #include <QModelIndex>
-#include "ui_EnvTab.h"
 
 class StateMachine;
+
+QT_BEGIN_NAMESPACE
+namespace Ui { class EnvTab; };
+QT_END_NAMESPACE
 
 class EnvTab : public QWidget
 {
@@ -16,7 +19,7 @@ public:
 	~EnvTab();
 
 private:
-	Ui::EnvTab ui;
+	Ui::EnvTab *ui;
 	StateMachine * sys;
 	QStandardItemModel *itemMdl;
 

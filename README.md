@@ -4,6 +4,17 @@
 
 a Shader-based software render for learning
 
+| 模块名   | 内容                                          | 类型       |
+| :------- | :-------------------------------------------- | :--------- |
+| Base     | Camera、Transform、Mesh、Vertex 等基础类      | 静态库     |
+| Material | 材质系统：BlinnMaterial、PBRMaterial、Texture | 静态库     |
+| Shader   | 着色器基类与实现：BlinnShader、PBRShader      | 静态库     |
+| Pipeline | 渲染管线：Graphics、RenderLoop、StateMachine  | 静态库     |
+| UI       | Qt 界面组件：EnvTab、ModelTab、RenderWidget   | 静态库     |
+| App      | 主程序入口：main.cpp                          | 可执行文件 |
+
+
+
 知乎文章上的版本请查看oldversion分支
 
 

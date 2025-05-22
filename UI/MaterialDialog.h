@@ -1,11 +1,15 @@
 #pragma once
 
 #include <QDialog>
-#include "ui_MaterialDialog.h"
+#include <QLabel>
 
 class Material;
 class Texture2D;
 class StateMachine;
+
+QT_BEGIN_NAMESPACE
+namespace Ui { class MaterialDialog; }
+QT_END_NAMESPACE
 
 class MaterialDialog : public QDialog
 {
@@ -16,10 +20,10 @@ public:
 	~MaterialDialog();
 
 private:
-	Ui::MaterialDialog ui;
+	Ui::MaterialDialog *ui;
 	StateMachine * sys;
 	Material * material;
-	void ShowTexture(Texture2D * t,QLabel * cav);
+	void ShowTexture(Texture2D * t, QLabel * cav);
 	bool init;
 
 protected slots:

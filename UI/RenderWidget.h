@@ -11,10 +11,12 @@
 #include "Pipeline/RenderLoop.h"
 #include "ModelTab.h"
 #include "EnvTab.h"
-#include "ui_RenderWidget.h"
-
 
 class StateMachine;
+
+QT_BEGIN_NAMESPACE
+namespace Ui { class RenderWidgetClass; }
+QT_END_NAMESPACE
 
 class RenderWidget : public QWidget
 {
@@ -42,7 +44,7 @@ protected:
 	void paintEvent(QPaintEvent *event) override;
 
 private:
-	Ui::RenderWidgetClass ui;
+	Ui::RenderWidgetClass *ui;
 	QImage * canvas;
 	RenderLoop * renderLoop;
 	QThread * renderThread;

@@ -3,10 +3,14 @@
 #include <QWidget>
 #include <QStandardItemModel>
 #include <QModelIndex>
-#include "ui_ModelTab.h"
+#include <qtconfigmacros.h>
 #include "MaterialDialog.h"
 
 class StateMachine;
+
+QT_BEGIN_NAMESPACE
+namespace Ui { class ModelTab; }
+QT_END_NAMESPACE
 
 class ModelTab : public QWidget
 {
@@ -25,7 +29,7 @@ protected slots:
 	void SetMaterial();
 
 private:
-	Ui::ModelTab ui;
+	Ui::ModelTab *ui;
 	StateMachine * sys;
 
 	QStandardItemModel *itemMdl;
