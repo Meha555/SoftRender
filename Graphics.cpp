@@ -171,7 +171,7 @@ void Graphics::RasterizeTriangle(const VertexOut & v1, const VertexOut & v2, con
 	int F02 = (I02 * startX) + (J02 * startY) + K02;
 	int F03 = (I03 * startX) + (J03 * startY) + K03;
 
-	//面积
+	//闈㈢Н
 	//float Delta = (v2.windowPos.x - v1.windowPos.x) * (v3.windowPos.y - v1.windowPos.y) - (v1.windowPos.x - v3.windowPos.x) * (v1.windowPos.y - v2.windowPos.y);
 	int Delta = (fxPtX[1] - fxPtX[0]) * (fxPtY[2] - fxPtY[0]) - (fxPtX[0] - fxPtX[2]) * (fxPtY[0] - fxPtY[1]);
 	float OneDivideDelta = 1 / (float)Delta;
@@ -233,7 +233,7 @@ void Graphics::RasterizeTriangle(const VertexOut & v1, const VertexOut & v2, con
 	}
 }
 
-//bresenhamLine 画线算法
+//bresenhamLine 鐢荤嚎绠楁硶
 void Graphics::DrawLine(const VertexOut &from, const VertexOut &to)
 {
 	int startX = from.windowPos.x;
@@ -273,7 +273,7 @@ void Graphics::DrawLine(const VertexOut &from, const VertexOut &to)
 	int currentX = startX;
 	int currentY = startY;
 
-	//斜率小于1
+	//鏂滅巼灏忎簬1
 	if (dy <= dx)
 	{
 		int P = 2 * dy - dx;
@@ -290,7 +290,7 @@ void Graphics::DrawLine(const VertexOut &from, const VertexOut &to)
 			}
 		}
 	}
-	//斜率大于1，利用对称性画
+	//鏂滅巼澶т簬1锛屽埄鐢ㄥ绉版�х敾
 	else
 	{
 		int P = 2 * dx - dy;
@@ -308,7 +308,7 @@ void Graphics::DrawLine(const VertexOut &from, const VertexOut &to)
 		}
 	}
 }
-//透视恢复
+//閫忚鎭㈠
 inline void Graphics::PerspectiveRestore(VertexOut & v)
 {
 	v.worldPos /= v.Z;
@@ -318,7 +318,7 @@ inline void Graphics::PerspectiveRestore(VertexOut & v)
 	v.normal /= v.Z;
 	v.TBN /= v.Z;
 }
-//透视除法
+//閫忚闄ゆ硶
 inline void Graphics::PerspectiveDivision(VertexOut & v)
 {
 	v.Z = 1 / v.windowPos.w;
@@ -334,7 +334,7 @@ inline void Graphics::PerspectiveDivision(VertexOut & v)
 	v.normal *= v.Z;
 	v.TBN *= v.Z;
 }
-//视口变换
+//瑙嗗彛鍙樻崲
 inline void Graphics::ViewPortMapping(VertexOut & v)
 {
 	v.windowPos = sys->viewPortMatrix * v.windowPos;

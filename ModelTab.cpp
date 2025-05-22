@@ -52,7 +52,7 @@ ModelTab::~ModelTab()
 void ModelTab::OpenModel()
 {
 	QFileDialog *fileDialog = new QFileDialog(this);
-	fileDialog->setWindowTitle(QStringLiteral("打开模型"));
+	fileDialog->setWindowTitle(QStringLiteral("鎵撳紑妯″瀷"));
 	fileDialog->setDirectory(".");
 	fileDialog->setNameFilter(tr("Obj File(*.obj)"));
 	fileDialog->setFileMode(QFileDialog::ExistingFiles);

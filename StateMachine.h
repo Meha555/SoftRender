@@ -2,7 +2,7 @@
 #define STATEMACHINE_H
 
 #include "Global.h"
-//״̬�� ��¼ϵͳ����Ⱦ״̬
+//状态机 记录系统的渲染状态
 
 
 class Camera;

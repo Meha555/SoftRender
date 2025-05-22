@@ -28,7 +28,7 @@ public:
 	float pitch;
 	float yaw;
 
-	//Î»ÖÃ ´¹Ö±·´×ª ¿´µÄÄ¿±êµã Fov ¿í ¸ß
+	//ä½ç½® å‚ç›´åè½¬ çœ‹çš„ç›®æ ‡ç‚¹ Fov å®½ é«˜
 	Camera(
 		int w,
 		int h,

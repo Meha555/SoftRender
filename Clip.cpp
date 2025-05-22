@@ -38,7 +38,7 @@ bool AllVertexsInside(const std::vector<VertexOut> v) {
 	return true;
 }
 
-//½»µã£¬Í¨¹ı¶Ëµã²åÖµ
+//äº¤ç‚¹ï¼Œé€šè¿‡ç«¯ç‚¹æ’å€¼
 VertexOut Intersect(const VertexOut &v1, const VertexOut &v2, const glm::vec4 &line) {
 	float da = v1.windowPos.x * line.x + v1.windowPos.y * line.y + v1.windowPos.z *line.z + v1.windowPos.w * line.w;
 	float db = v2.windowPos.x * line.x + v2.windowPos.y * line.y + v2.windowPos.z *line.z + v2.windowPos.w * line.w;
@@ -75,7 +75,7 @@ std::vector<VertexOut> Clip::SutherlandHodgeman(const VertexOut &v1, const Verte
 	return output;
 }
 
-//²ÃµôÍêÈ«¿´²»¼ûµÄ
+//è£æ‰å®Œå…¨çœ‹ä¸è§çš„
 bool Clip::ClipSpaceCull(const glm::vec4 & v1, const glm::vec4 & v2, const glm::vec4 & v3) {
 	if (v1.w < near && v2.w < near && v3.w < near)
 		return false;
@@ -95,10 +95,10 @@ bool Clip::FaceCull(FaceCullMode face, const glm::vec4 & v1, const glm::vec4 & v
 	glm::vec3 tmp1 = glm::vec3(v2.x - v1.x, v2.y - v1.y, v2.z - v1.z);
 	glm::vec3 tmp2 = glm::vec3(v3.x - v1.x, v3.y - v1.y, v3.z - v1.z);
 
-	//²æ³ËµÃµ½·¨ÏòÁ¿
+	//å‰ä¹˜å¾—åˆ°æ³•å‘é‡
 	glm::vec3 normal = glm::normalize(glm::cross(tmp1, tmp2));
 	//glm::vec3 view = glm::normalize(glm::vec3(v1.x - camera->Position.x, v1.y - camera->Position.y, v1.z - camera->Position.z));
-	//NDCÖĞ¹Û²ì·½ÏòÖ¸Ïò+z
+	//NDCä¸­è§‚å¯Ÿæ–¹å‘æŒ‡å‘+z
 	glm::vec3 view = glm::vec3(0, 0, 1);
 	if (face == Back)
 		return glm::dot(normal, view) > 0;

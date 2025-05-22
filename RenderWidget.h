@@ -35,11 +35,11 @@ protected slots:
 	void DealInput();
 
 protected:
-	void mouseMoveEvent(QMouseEvent *event);
-	void keyPressEvent(QKeyEvent *event);
-	void keyReleaseEvent(QKeyEvent *event);
-	void wheelEvent(QWheelEvent *event);
-	void RenderWidget::paintEvent(QPaintEvent *event) override;
+	void mouseMoveEvent(QMouseEvent *event) override;
+	void keyPressEvent(QKeyEvent *event) override;
+	void keyReleaseEvent(QKeyEvent *event) override;
+	void wheelEvent(QWheelEvent *event) override;
+	void paintEvent(QPaintEvent *event) override;
 
 private:
 	Ui::RenderWidgetClass ui;

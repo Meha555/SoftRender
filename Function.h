@@ -43,7 +43,7 @@ static inline glm::vec2 lerp(const glm::vec2 &v1, const glm::vec2 &v2, float fac
 static float lerp(float f1, float f2, float factor) {
 	return (1.0f - factor)*f1 + factor * f2;
 }
-//Á½µã²åÖµ
+//ä¸¤ç‚¹æ’å€¼
 static VertexOut lerp(const VertexOut & v1, const VertexOut & v2, float factor)
 {
 	return VertexOut(
@@ -58,7 +58,7 @@ static VertexOut lerp(const VertexOut & v1, const VertexOut & v2, float factor)
 	);
 }
 
-//Èıµã²åÖµ
+//ä¸‰ç‚¹æ’å€¼
 static VertexOut lerp(const VertexOut & v1, const VertexOut & v2, const VertexOut & v3, const glm::vec3 & weights)
 {
 	return VertexOut(

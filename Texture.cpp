@@ -136,7 +136,7 @@ glm::vec4 Texture3D::SampleCUBE(const glm::vec3 & v)
 	float ma, sc, tc;
 	FaceDir faceIndex;
 	ma = max(max(absX, absY), absZ);
-	// +X ×ó +Y ÉÏ +Z Ç°  ÓÒÊÖÏµ
+	// +X å·¦ +Y ä¸Š +Z å‰  å³æ‰‹ç³»
 	if (ma == absX) {   
 		if (v.x > 0) {                 
 			faceIndex = right;      

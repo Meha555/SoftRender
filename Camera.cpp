@@ -2,7 +2,7 @@
 #include "Transform.h"
 #include "Clip.h"
 #include "Function.h"
-//Î»ÖÃ ´¹Ö±·´×ª ¿´µÄÄ¿±êµã Fov ¿í ¸ß
+//ä½ç½® å‚ç›´åè½¬ çœ‹çš„ç›®æ ‡ç‚¹ Fov å®½ é«˜
 Camera::Camera(
 	int w,
 	int h,

@@ -89,7 +89,7 @@ void MaterialDialog::ShowTexture(Texture2D * t, QLabel * cav)
 void MaterialDialog::OpenMainTexture(){
 	sys->mutex.lock();
 	QFileDialog *fileDialog = new QFileDialog(this);
-	fileDialog->setWindowTitle(QStringLiteral("´ò¿ªÎÆÀí"));
+	fileDialog->setWindowTitle(QStringLiteral("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
 	fileDialog->setDirectory(".");
 	fileDialog->setNameFilter(tr("Texture File(*.bmp *.jpg *.jpeg *.png *.tga *.hdr)"));
 	fileDialog->setFileMode(QFileDialog::ExistingFiles);
@@ -109,7 +109,7 @@ void MaterialDialog::OpenNormalTexture()
 {
 	sys->mutex.lock();
 	QFileDialog *fileDialog = new QFileDialog(this);
-	fileDialog->setWindowTitle(QStringLiteral("´ò¿ªÎÆÀí"));
+	fileDialog->setWindowTitle(QStringLiteral("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
 	fileDialog->setDirectory(".");
 	fileDialog->setNameFilter(tr("Texture File(*.bmp *.jpg *.jpeg *.png *.tga *.hdr)"));
 	fileDialog->setFileMode(QFileDialog::ExistingFiles);
@@ -129,7 +129,7 @@ void MaterialDialog::OpenMetallicTexture()
 {
 	sys->mutex.lock();
 	QFileDialog *fileDialog = new QFileDialog(this);
-	fileDialog->setWindowTitle(QStringLiteral("´ò¿ªÎÆÀí"));
+	fileDialog->setWindowTitle(QStringLiteral("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
 	fileDialog->setDirectory(".");
 	fileDialog->setNameFilter(tr("Texture File(*.bmp *.jpg *.jpeg *.png *.tga *.hdr)"));
 	fileDialog->setFileMode(QFileDialog::ExistingFiles);
@@ -149,7 +149,7 @@ void MaterialDialog::OpenRoughnessTexture()
 {
 	sys->mutex.lock();
 	QFileDialog *fileDialog = new QFileDialog(this);
-	fileDialog->setWindowTitle(QStringLiteral("´ò¿ªÎÆÀí"));
+	fileDialog->setWindowTitle(QStringLiteral("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
 	fileDialog->setDirectory(".");
 	fileDialog->setNameFilter(tr("Texture File(*.bmp *.jpg *.jpeg *.png *.tga *.hdr)"));
 	fileDialog->setFileMode(QFileDialog::ExistingFiles);
@@ -169,7 +169,7 @@ void MaterialDialog::OpenAOTexture()
 {
 	sys->mutex.lock();
 	QFileDialog *fileDialog = new QFileDialog(this);
-	fileDialog->setWindowTitle(QStringLiteral("´ò¿ªÎÆÀí"));
+	fileDialog->setWindowTitle(QStringLiteral("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
 	fileDialog->setDirectory(".");
 	fileDialog->setNameFilter(tr("Texture File(*.bmp *.jpg *.jpeg *.png *.tga *.hdr)"));
 	fileDialog->setFileMode(QFileDialog::ExistingFiles);

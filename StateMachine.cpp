@@ -58,7 +58,7 @@ StateMachine * StateMachine::GetInstance()
 	return localInstance;
 }
 
-//初始化灯光摄像机
+//鍒濆鍖栫伅鍏夋憚鍍忔満
 void StateMachine::Init(int w, int h, float fov)
 {
 	width = w;

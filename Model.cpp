@@ -37,16 +37,16 @@ Model::~Model()
 
 glm::mat4 Model::GetModelMatrix() const
 {
-	//Ëõ·Å
+	//ç¼©æ”¾
 	glm::mat4 mat(scale);
 	mat[3][3] = 1.0f;
 
-	//Ðý×ª
+	//æ—‹è½¬
 	mat = glm::rotate(mat, glm::radians(pitch), glm::vec3(1, 0, 0));
 	mat = glm::rotate(mat, glm::radians(yaw), glm::vec3(0, 1, 0));
 	mat = glm::rotate(mat, glm::radians(roll), glm::vec3(0, 0, 1));
 
-	//Æ½ÒÆ
+	//å¹³ç§»
 	mat[3][0] = position.x;
 	mat[3][1] = position.y;
 	mat[3][2] = position.z;
@@ -111,7 +111,7 @@ void Model::LoadObj(const std::string &filename)
 			iss >> vt.x;
 			iss >> vt.y;
 			vt.y = 1 - vt.y;
-			//¶þÎ¬ÎÆÀí z=0
+			//äºŒç»´çº¹ç† z=0
 			iss >> vt.z;
 			texcoords.push_back(glm::vec2(vt.x, vt.y));
 			continue;

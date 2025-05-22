@@ -14,7 +14,7 @@ RenderWidget::RenderWidget(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	//³õÊ¼»¯Ö¡»º³å ÉãÏñ»ú µÆ¹â
+	//ï¿½ï¿½Ê¼ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ¹ï¿½
 	sys = StateMachine::GetInstance();
 	sys->Init(800, 600, 60);
 
@@ -43,10 +43,10 @@ RenderWidget::RenderWidget(QWidget *parent)
 
 
 	mdTab = new ModelTab(ui.tabWidget);
-	ui.tabWidget->addTab(mdTab, QString::fromLocal8Bit("Ä£ÐÍÉèÖÃ"));
+	ui.tabWidget->addTab(mdTab, QString::fromLocal8Bit("Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
 
 	envTab = new EnvTab(ui.tabWidget);
-	ui.tabWidget->addTab(envTab, QString::fromLocal8Bit("»·¾³ÉèÖÃ"));
+	ui.tabWidget->addTab(envTab, QString::fromLocal8Bit("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
 
 	
 }
@@ -111,7 +111,7 @@ void RenderWidget::keyPressEvent(QKeyEvent * event)
 	}
 	pressedKeys.append(static_cast<Qt::Key>(event->key()));
 	if (!inputTimer->isActive()) {
-		inputTimer->start(INPUT_RATE); // ÖØ¸´¼ä¸ô REPEAT_RATE = 300 ºÁÃë
+		inputTimer->start(INPUT_RATE); // ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ REPEAT_RATE = 300 ï¿½ï¿½ï¿½ï¿½
 	}
 }
 
@@ -150,9 +150,15 @@ void RenderWidget::DealInput()
 
 void RenderWidget::wheelEvent(QWheelEvent * event)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    if (event->angleDelta().y() > 0) {
+        renderLoop->Zoom(0.1);
+    }
+#else
 	if (event->delta() > 0) {
 		renderLoop->Zoom(0.1);
 	}
+#endif
 	else {
 		renderLoop->Zoom(-0.1);
 	}

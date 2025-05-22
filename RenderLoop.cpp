@@ -91,8 +91,8 @@ void RenderLoop::MainLoop()
 	helmet->meshes[0]->material->SetTexture(rn, 3);
 	helmet->meshes[0]->material->SetTexture(ao, 4);
 	sys->AddModel(helmet);
-	//ÏÈ´æobject ÔÙÍ³Ò»»­
-	//ÏÈshadow pass
+	//å…ˆå­˜object å†ç»Ÿä¸€ç”»
+	//å…ˆshadow pass
 	while (!shouldClosed) {
 
 		//shadowmap
