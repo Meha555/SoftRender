@@ -1,4 +1,4 @@
-#include "RenderWidget.h"
+#include "UI/RenderWidget.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

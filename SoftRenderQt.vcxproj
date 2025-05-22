@@ -115,9 +115,6 @@
     <QtUic Include="RenderWidget.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="SoftRenderQt.qrc" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="BlinnShader.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Clip.h" />
